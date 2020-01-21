@@ -1,2 +1,2 @@
-# Eventually_server
- Nodejs server side app for the WScourse final project
+# Riding_Groups_server
+ nodejs server application
