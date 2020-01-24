@@ -44,26 +44,27 @@ const timeSelection = new Schema(
         expiry: Date,
         dates: [Date],
         suggestions: [suggestion]
-    }
+    },
+    { _id: false }
 )
 
 const eventSchema = new Schema(
     {
         name: { type: String, required: true },
-        admin: ObjectId,
+        admin: { type: ObjectId, required: true },
         profileImage: String,
         time: Date,
-        type: [{ type: String, enum: types }],
+        type: { type: String, enum: types },
         Messages: [message],
         Images: [image],
         participants: [ObjectId],
-        timeSelection: timeSelection
+        timeSelection: timeSelection,
+        invitations: [ObjectId]
     },
     {
         collection: 'Events'
     }
 )
 
-// userSchema.path('name').validate(name => (name.length > 2) && (name.length < 25), err => console.log(err));
 
 module.exports = mongoose.model('events', eventSchema);

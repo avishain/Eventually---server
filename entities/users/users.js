@@ -5,16 +5,13 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 const types = [
     'news',
     'invitation',
-    'dateSelection'
+    'dateSelection' // invite to select date for event
 ]
 
 const notification = new Schema(
     {
         event: ObjectId,
-        type: [{
-            type: String,
-            enum: types
-        }],
+        type: { type: String, enum: types },
         receiveTime: Date
     }
 );

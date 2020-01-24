@@ -1,5 +1,4 @@
 const users = require('../users');
-
 const getUser = _id => new Promise((resolve, reject) => {
     users.findOne({ _id }).then(user => resolve(user)).catch(err => reject(err));
 });

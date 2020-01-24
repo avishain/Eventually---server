@@ -3,6 +3,7 @@ const { DB_USER, DB_PASS, DB_HOST } = require('./config');
 
 const url = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}`;
 
+
 const options = {
   useCreateIndex: true,
   useNewUrlParser: true,
