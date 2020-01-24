@@ -2,7 +2,7 @@ const Event = require('../events');
 const { validateParams, setEventformat, containsAllRequired } = require('./helpers');
 
 const createEvent = newEventParams => new Promise((resolve, reject) => {
-    const validationCheck = validateParams(newEventParams);
+    let validationCheck = validateParams(newEventParams);
     validationCheck = validationCheck === true ? containsAllRequired(newEventParams) : validationCheck;
 
     if (validationCheck !== true) {
