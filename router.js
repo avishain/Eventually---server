@@ -16,7 +16,7 @@ usersRouter.put('/editUser/:id', usersController.editUser )
 eventsRouter.get('/:id', eventsController.getEvent);
 eventsRouter.get('/', eventsController.getEvents);
 eventsRouter.post('/', eventsController.createEvent);
-eventsRouter.post('/image/:id', eventsController.addImage);
+eventsRouter.post('/image/:eventID', eventsController.addImage);
 eventsRouter.post('/message/:eventID', eventsController.addMessage);
 eventsRouter.delete('/:id', eventsController.removeEvent);
 eventsRouter.delete('/images/:eventId/:imageId', eventsController.removeImage);
