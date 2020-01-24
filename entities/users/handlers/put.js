@@ -25,14 +25,16 @@ const editName = userParams => new Promise((resolve, reject) => {
 	console.log('editName called!');
 	const _id = userParams.params.id;
 	const { name } = userParams.body;
+	if (name == null || name == '') {
+		reject('you must provide name!');
+	}
 	users.updateOne({ _id }, { name }).then(result => resolve(result)).catch(err => reject(err));
 });
 
 const editProfilePicture = req => new Promise((resolve, reject) => {
 	console.log('editProfilePicture called!');
 	const _id = req.params.id;
-	const { image } = req.body;
-	const profileImage = image;
+	profileImage = req.body.image;
 	users.updateOne({ _id }, { profileImage }).then(result => resolve(result)).catch(err => reject(err));
 });
 

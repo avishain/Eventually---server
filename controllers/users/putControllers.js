@@ -2,8 +2,7 @@ const { addEvent, editUser, editName, editProfilePicture, addFriend, removeFrien
 
 exports.addEvent = (req, res) => addEvent(req)
 	.then(user => {
-		console.log(`User (${user._id}) for add event was provided`);
-		res.send(user);
+		res.send('Event  Added Succefully');
 
 	}).catch(err => {
 		res.json({ message: err.message })
@@ -14,7 +13,6 @@ exports.addEvent = (req, res) => addEvent(req)
 
 exports.editUser = (req, res) => editUser(req)
 	.then(response => {
-		console.log(`User was Updated`);
 		res.send("user Updated successfully");
 
 	}).catch(err => {
@@ -24,27 +22,27 @@ exports.editUser = (req, res) => editUser(req)
 
 exports.editName = (req, res) => editName(req)
 	.then(response => {
-		console.log(` name was Updated`);
 		res.send("user name Updated successfully");
 
 	}).catch(err => {
 		console.error(err.message);
-		res.status(404).send('Please recheck the provided ID');
+		res.status(404).send('Please recheck the provided ID and name');
 	});
 
 exports.editProfilePicture = (req, res) => editProfilePicture(req)
 	.then(response => {
-		console.log(` ProfilePicture was Updated`);
+		if (response.n === 0) {
+			res.status(404).send('cannot find user!');
+		}
 		res.send("ProfilePicture Updated successfully");
 
 	}).catch(err => {
 		console.error(err.message);
-		res.status(404).send('Please recheck the provided ID');
+		res.status(404).send('Please recheck the provided ID and new picture');
 	});
 
 exports.addFriend = (req, res) => addFriend(req)
 	.then(response => {
-		console.log(` friend added`);
 		res.send("friends Updated successfully");
 
 	}).catch(err => {
@@ -54,7 +52,6 @@ exports.addFriend = (req, res) => addFriend(req)
 
 exports.removeFriend = (req, res) => removeFriend(req)
 	.then(response => {
-		console.log(` friend removed`);
 		res.send("friend removed successfully");
 
 	}).catch(err => {
@@ -64,7 +61,6 @@ exports.removeFriend = (req, res) => removeFriend(req)
 
 exports.removeEvent = (req, res) => removeEvent(req)
 	.then(response => {
-		console.log(` event removed`);
 		res.send("event removed successfully");
 
 	}).catch(err => {
