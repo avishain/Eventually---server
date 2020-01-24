@@ -12,7 +12,7 @@ const notification = new Schema(
 	{
 		event: ObjectId,
 		type: { type: String, enum: types },
-		receiveTime: {type:Date,default: Date.now}
+		receiveTime: { type: Date, default: Date.now }
 	}
 );
 
@@ -20,7 +20,10 @@ const userSchema = new Schema(
 	{
 		name: {
 			type: String,
-			required: true
+			required: true,
+			minlength: 3,
+			maxlength: 200,
+			match: [/^[_A-z0-9]*((-|\s)*[_A-z0-9])*$/, 'name cannot contains special characters']
 		},
 		profileImage: String,
 		events: [ObjectId],

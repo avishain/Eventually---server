@@ -19,7 +19,7 @@ exports.addNotification = (req, res) => addNotification(req)
 			res.send('notification added successfully');
 		}
 	}).catch(err => {
-		res.json({ message: err.message });
+		res.status(404).send(`add notification failed. ${err}`);
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');

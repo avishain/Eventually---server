@@ -23,7 +23,7 @@ exports.editName = (req, res) => editName(req)
 		res.send('user name Updated successfully');
 	}).catch(err => {
 		console.error(err.message);
-		res.status(404).send('Please recheck the provided ID and name');
+		res.status(404).send('Please recheck the provided ID and name ' + err.message);
 	});
 
 exports.editProfilePicture = (req, res) => editProfilePicture(req)

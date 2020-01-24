@@ -22,10 +22,8 @@ const editName = userParams => new Promise((resolve, reject) => {
 	console.log('editName called!');
 	const _id = userParams.params.id;
 	const { name } = userParams.body;
-	if (name == null || name === '') {
-		reject(new Error('you must provide name!'));
-	}
-	users.updateOne({ _id }, { name }).then(result => resolve(result)).catch(err => reject(err));
+	const opts = { runValidators: true };
+	users.updateOne({ _id }, { name }, opts ).then(result => resolve(result)).catch(err => reject(err));
 });
 
 const editProfilePicture = req => new Promise((resolve, reject) => {
