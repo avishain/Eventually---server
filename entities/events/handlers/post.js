@@ -2,7 +2,7 @@ const Event = require('../events');
 const { validateParams, setEventformat, containsAllRequired } = require('./helpers');
 
 const createEvent = newEventParams => new Promise((resolve, reject) => {
-    const validationCheck = validateParams(newEventParams);
+    let validationCheck = validateParams(newEventParams);
     validationCheck = validationCheck === true ? containsAllRequired(newEventParams) : validationCheck;
 
     if (validationCheck !== true) {
@@ -31,14 +31,13 @@ const addImage = req => {
 
 const addMessage = req => {
     return new Promise((resolve, reject) => {
-        const { id } = req.params;
-        const { message } = req.body;
+        const _id = req.params.eventID;
 
-        Event.findOne({ _id: id })
+        Event.findOne({ _id })
             .then(event => {
                 const { Messages } = event;
-                Messages.push(message);
-                Event.updateOne({ _id: id }, { Messages }).then(result => resolve(result)).catch(err => console.log(err));
+                Messages.push(req.body);
+                Event.updateOne({ _id }, { Messages }).then(result => resolve(result)).catch(err => console.log(err));
             })
             .catch(err => reject("problem adding the message: " + err));
     })
