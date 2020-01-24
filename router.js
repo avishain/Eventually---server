@@ -9,8 +9,13 @@ usersRouter.get('/', usersController.getUsers);
 
 usersRouter.post('/createUser',usersController.createUser); //change to '/'
 
-usersRouter.put('/addEvent', usersController.addEvent );
-usersRouter.put('/editUser/:id', usersController.editUser )
+usersRouter.put('/event/:id', usersController.addEvent );
+usersRouter.put('/editUser/:id', usersController.editUser );
+usersRouter.put ('/editName/:id',usersController.editName);
+usersRouter.put ('/editProfilePicture/:id',usersController.editProfilePicture);
+usersRouter.put ('/addFriend/:id',usersController.addFriend);
+usersRouter.put ('/removeFriend/:id',usersController.removeFriend);
+usersRouter.put ('/removeEvent/:id',usersController.removeEvent);
 
 
 eventsRouter.get('/:id', eventsController.getEvent);
