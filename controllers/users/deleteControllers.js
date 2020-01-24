@@ -2,7 +2,7 @@ const { removeUser, removeNotification } = require('../../entities/users/handler
 
 exports.removeUser = (req, res) => removeUser(req)
 	.then(response => {
-		let MSG = 'user removed successfully'
+		let MSG = 'user removed successfully';
 		if (response.n === 0) {
 			MSG = 'cannot remove user, user doesnot exist!';
 		}
@@ -14,7 +14,7 @@ exports.removeUser = (req, res) => removeUser(req)
 
 exports.removeNotification = (req, res) => removeNotification(req)
 	.then(response => {
-		let MSG = 'notification removed successfully'
+		let MSG = 'notification removed successfully';
 		if (response.n > 0 && response.nModified === 0) {
 			MSG = 'cannot remove notification, notification doesnot exist!';
 		} else if (response.n === 0 && response.nModified === 0) {

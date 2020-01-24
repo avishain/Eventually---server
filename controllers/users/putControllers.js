@@ -3,9 +3,8 @@ const { addEvent, editUser, editName, editProfilePicture, addFriend, removeFrien
 exports.addEvent = (req, res) => addEvent(req)
 	.then(user => {
 		res.send('Event  Added Succefully');
-
 	}).catch(err => {
-		res.json({ message: err.message })
+		res.json({ message: err.message });
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');
@@ -13,8 +12,7 @@ exports.addEvent = (req, res) => addEvent(req)
 
 exports.editUser = (req, res) => editUser(req)
 	.then(response => {
-		res.send("user Updated successfully");
-
+		res.send('user Updated successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');
@@ -22,8 +20,7 @@ exports.editUser = (req, res) => editUser(req)
 
 exports.editName = (req, res) => editName(req)
 	.then(response => {
-		res.send("user name Updated successfully");
-
+		res.send('user name Updated successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID and name');
@@ -34,8 +31,7 @@ exports.editProfilePicture = (req, res) => editProfilePicture(req)
 		if (response.n === 0) {
 			res.status(404).send('cannot find user!');
 		}
-		res.send("ProfilePicture Updated successfully");
-
+		res.send('ProfilePicture Updated successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID and new picture');
@@ -43,8 +39,7 @@ exports.editProfilePicture = (req, res) => editProfilePicture(req)
 
 exports.addFriend = (req, res) => addFriend(req)
 	.then(response => {
-		res.send("friends Updated successfully");
-
+		res.send('friends Updated successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided user ID and friend to add must be ObjectID!');
@@ -52,8 +47,7 @@ exports.addFriend = (req, res) => addFriend(req)
 
 exports.removeFriend = (req, res) => removeFriend(req)
 	.then(response => {
-		res.send("friend removed successfully");
-
+		res.send('friend removed successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided user ID and friend to remove must be ObjectID exist!');
@@ -61,15 +55,8 @@ exports.removeFriend = (req, res) => removeFriend(req)
 
 exports.removeEvent = (req, res) => removeEvent(req)
 	.then(response => {
-		res.send("event removed successfully");
-
+		res.send('event removed successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided user ID and event to remove must be ObjectID exist!');
 	});
-
-
-
-
-
-

@@ -13,7 +13,7 @@ app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 
 app.use((req, res) => {
-    res.status(400).send('Invalid query');
+	res.status(400).send('Invalid query');
 });
 
 app.listen(port, () => console.log('Express server is running on port ', port));

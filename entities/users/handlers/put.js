@@ -1,5 +1,4 @@
 const users = require('../users');
-
 const addEvent = userParams => new Promise((resolve, reject) => {
 	console.log('addEvent called!');
 	const { id } = userParams.params;
@@ -7,7 +6,6 @@ const addEvent = userParams => new Promise((resolve, reject) => {
 	users.updateOne({ _id: id }, { $push: { events: eventId } })
 		.then(result => resolve(result))
 		.catch(err => reject(err));
-
 });
 // let the user change the name and appends all other values to current arrays (events,friends,inbox)
 
@@ -18,15 +16,14 @@ const editUser = userParams => new Promise((resolve, reject) => {
 	users.updateOne({ _id: id }, { name, $push: { events, friends, inbox } })
 		.then(result => resolve(result))
 		.catch(err => reject(err));
-
 });
 
 const editName = userParams => new Promise((resolve, reject) => {
 	console.log('editName called!');
 	const _id = userParams.params.id;
 	const { name } = userParams.body;
-	if (name == null || name == '') {
-		reject('you must provide name!');
+	if (name == null || name === '') {
+		reject(new Error('you must provide name!'));
 	}
 	users.updateOne({ _id }, { name }).then(result => resolve(result)).catch(err => reject(err));
 });
@@ -34,7 +31,7 @@ const editName = userParams => new Promise((resolve, reject) => {
 const editProfilePicture = req => new Promise((resolve, reject) => {
 	console.log('editProfilePicture called!');
 	const _id = req.params.id;
-	profileImage = req.body.image;
+	const profileImage = req.body.image;
 	users.updateOne({ _id }, { profileImage }).then(result => resolve(result)).catch(err => reject(err));
 });
 
@@ -73,4 +70,4 @@ module.exports = {
 	addFriend,
 	removeFriend,
 	removeEvent
-}
+};

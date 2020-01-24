@@ -20,5 +20,5 @@ exports.usersController = {
 	removeEvent,
 	// // DELETE
 	removeUser,
-	removeNotification    
-}
+	removeNotification
+};

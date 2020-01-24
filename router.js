@@ -6,20 +6,17 @@ const eventsRouter = new Router();
 
 usersRouter.get('/:id', usersController.getUser);
 usersRouter.get('/', usersController.getUsers);
-
-usersRouter.post('/createUser',usersController.createUser); //change to '/'
-usersRouter.post('/addNotification/:id',usersController.addNotification);
-
-usersRouter.put('/event/:id', usersController.addEvent );
-usersRouter.put('/editUser/:id', usersController.editUser );
-usersRouter.put ('/editName/:id',usersController.editName);
-usersRouter.put ('/editProfilePicture/:id',usersController.editProfilePicture);
-usersRouter.put ('/addFriend/:id',usersController.addFriend);
-usersRouter.put ('/removeFriend/:id',usersController.removeFriend);
-usersRouter.put ('/removeEvent/:id',usersController.removeEvent);
-usersRouter.delete ('/removeUser/:id',usersController.removeUser);
-usersRouter.delete ('/removeNotification/:id',usersController.removeNotification);
-
+usersRouter.post('/createUser', usersController.createUser);
+usersRouter.post('/addNotification/:id', usersController.addNotification);
+usersRouter.put('/event/:id', usersController.addEvent);
+usersRouter.put('/editUser/:id', usersController.editUser);
+usersRouter.put('/editName/:id', usersController.editName);
+usersRouter.put('/editProfilePicture/:id', usersController.editProfilePicture);
+usersRouter.put('/addFriend/:id', usersController.addFriend);
+usersRouter.put('/removeFriend/:id', usersController.removeFriend);
+usersRouter.put('/removeEvent/:id', usersController.removeEvent);
+usersRouter.delete('/removeUser/:id', usersController.removeUser);
+usersRouter.delete('/removeNotification/:id', usersController.removeNotification);
 eventsRouter.get('/:id', eventsController.getEvent);
 eventsRouter.get('/', eventsController.getEvents);
 eventsRouter.post('/', eventsController.createEvent);
@@ -37,6 +34,6 @@ eventsRouter.put('/addParticipant/:eventId', eventsController.addParticipant);
 eventsRouter.put('/removeParticipant/:eventId', eventsController.removeParticipant);
 
 module.exports = {
-    usersRouter,
-    eventsRouter
+	usersRouter,
+	eventsRouter
 };

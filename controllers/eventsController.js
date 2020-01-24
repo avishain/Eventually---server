@@ -4,23 +4,23 @@ const { removeEvent, removeImage, removeMessage } = require('./events/deleteCont
 const { editEvent, editName, editTime, editType, editSuggestion, addParticipant, removeParticipant } = require('./events/putController');
 
 exports.eventsController = {
-    // GET
-    getEvent,
-    getEvents,
-    // POST
-    createEvent,
-    addImage,
-    addMessage,
-    // PUT
-    editEvent,
-    editName,
-    editTime,
-    editType,
-    editSuggestion,
-    addParticipant,
-    removeParticipant,
-    // DELETE
-    removeEvent,
-    removeImage,
-    removeMessage
-}
+	// GET
+	getEvent,
+	getEvents,
+	// POST
+	createEvent,
+	addImage,
+	addMessage,
+	// PUT
+	editEvent,
+	editName,
+	editTime,
+	editType,
+	editSuggestion,
+	addParticipant,
+	removeParticipant,
+	// DELETE
+	removeEvent,
+	removeImage,
+	removeMessage
+};

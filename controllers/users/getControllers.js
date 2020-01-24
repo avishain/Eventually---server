@@ -2,11 +2,9 @@ const { getUser, getUsers } = require('../../entities/users/handlers/get');
 
 exports.getUser = (req, res) => getUser(req.params.id)
 	.then(user => {
-		console.log(`User (${user._id}) was provided`);
 		res.send(user);
-
 	}).catch(err => {
-		res.json({ message: err.message })
+		res.json({ message: err.message });
 	})
 	.catch(err => {
 		console.error(err.message);
