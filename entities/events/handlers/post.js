@@ -15,31 +15,16 @@ const createEvent = newEventParams => new Promise((resolve, reject) => {
 });
 
 const addImage = req => {
+    const _id = req.params.eventID;
     return new Promise((resolve, reject) => {
-        const { id } = req.params;
-        const { image } = req.body;
-
-        Event.findOne({ _id: id })
-            .then(event => {
-                const { Images } = event;
-                Images.push(image);
-                Event.updateOne({ _id: id }, { Images }).then(result => resolve(result)).catch(err => console.log(err));
-            })
-            .catch(err => reject("problem adding the image: " + err));
+        Event.updateOne({ _id }, { $push: { Images: req.body } }).then(result => resolve(result)).catch(err => reject(err));
     })
 };
 
 const addMessage = req => {
+    const _id = req.params.eventID;
     return new Promise((resolve, reject) => {
-        const _id = req.params.eventID;
-
-        Event.findOne({ _id })
-            .then(event => {
-                const { Messages } = event;
-                Messages.push(req.body);
-                Event.updateOne({ _id }, { Messages }).then(result => resolve(result)).catch(err => console.log(err));
-            })
-            .catch(err => reject("problem adding the message: " + err));
+        Event.updateOne({ _id }, { $push: { Messages: req.body } }).then(result => resolve(result)).catch(err => reject(err));
     })
 };
 
