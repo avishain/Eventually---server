@@ -32,15 +32,11 @@ const addImage = req => {
 const addMessage = req => {
     return new Promise((resolve, reject) => {
         const _id = req.params.eventID;
-        const message = req.body;
 
         Event.findOne({ _id })
             .then(event => {
                 const { Messages } = event;
-                Messages.pop();
-                Messages.pop();
-                Messages.pop();
-                // Messages.push(message);
+                Messages.push(req.body);
                 Event.updateOne({ _id }, { Messages }).then(result => resolve(result)).catch(err => console.log(err));
             })
             .catch(err => reject("problem adding the message: " + err));
