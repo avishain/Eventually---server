@@ -2,13 +2,13 @@ const { removeUser, removeNotification } = require('../../entities/users/handler
 
 //---------------------------------------------------------------------------------------------
 
-exports.removeUser = (req, res) => removeUser(req)
+exports.removeUser = (req, res) => removeUser(req.params.id)
 	.then(response => {
-		let MSG = 'user removed successfully';
+		let message = 'user removed successfully';
 		if (response.n === 0) {
-			MSG = 'cannot remove user, user doesnot exist!';
+			message = 'cannot remove user, user doesnot exist!';
 		}
-		res.send(MSG);
+		res.send(message);
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided user correct ID!');

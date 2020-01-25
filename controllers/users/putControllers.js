@@ -3,8 +3,9 @@ const { addEvent, editUser, editName, editProfilePicture, addFriend, removeFrien
 //---------------------------------------------------------------------------------------------
 
 exports.addEvent = (req, res) => addEvent(req)
-	.then(user => {
-		res.send('Event  Added Succefully');
+	.then(() => {
+		console.error('Event added Succefully');
+		res.send('Event added Succefully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');
@@ -14,7 +15,7 @@ exports.addEvent = (req, res) => addEvent(req)
 
 exports.editUser = (req, res) => editUser(req)
 	.then(response => {
-		res.send('user Updated successfully');
+		res.send('User updated successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');
@@ -37,7 +38,7 @@ exports.editProfilePicture = (req, res) => editProfilePicture(req)
 		if (response.n === 0) {
 			res.status(404).send('cannot find user!');
 		}
-		res.send('ProfilePicture Updated successfully');
+		res.send('Profile picture updated successfully');
 	}).catch(err => {
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID and new picture');

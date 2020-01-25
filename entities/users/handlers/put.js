@@ -6,6 +6,7 @@ const addEvent = userParams => new Promise((resolve, reject) => {
 	console.log('addEvent called!');
 	const { id } = userParams.params;
 	const { eventId = null } = userParams.body;
+
 	users.updateOne({ _id: id }, { $push: { events: eventId } })
 		.then(result => resolve(result))
 		.catch(err => reject(err));
@@ -37,7 +38,7 @@ const editName = userParams => new Promise((resolve, reject) => {
 //---------------------------------------------------------------------------------------------
 
 const editProfilePicture = req => new Promise((resolve, reject) => {
-	console.log('editProfilePicture called!');
+	console.log('edit ProfilePicture called!');
 	const _id = req.params.id;
 	const profileImage = req.body.image;
 

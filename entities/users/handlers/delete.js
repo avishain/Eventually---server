@@ -2,10 +2,8 @@ const users = require('../users');
 
 //---------------------------------------------------------------------------------------------
 
-const removeUser = req => new Promise((resolve, reject) => {
+const removeUser = _id => new Promise((resolve, reject) => {
 	console.log('removeUser called!');
-	const _id = req.params.id;
-
 	users.deleteOne({ _id }).then(result => resolve(result)).catch(err => reject(err));
 });
 
@@ -14,9 +12,9 @@ const removeUser = req => new Promise((resolve, reject) => {
 const removeNotification = req => new Promise((resolve, reject) => {
 	console.log('removeNotification called!');
 	const _id = req.params.id;
-	const { messageID } = req.body;
+	const { notificationID } = req.body;
 
-	users.updateOne({ _id }, { $pull: { inbox: { _id: messageID } } }).then(result => resolve(result)).catch(err => reject(err));
+	users.updateOne({ _id }, { $pull: { inbox: { _id: notificationID } } }).then(result => resolve(result)).catch(err => reject(err));
 });
 
 //---------------------------------------------------------------------------------------------
