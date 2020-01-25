@@ -4,7 +4,7 @@ const users = require('../users');
 
 const createUser = userParams => new Promise((resolve, reject) => {
     console.log('createUser called!');
-    
+
     if('name' in userParams === false) {
         return reject('"name" is mandatory');
     }
@@ -16,13 +16,13 @@ const createUser = userParams => new Promise((resolve, reject) => {
 
 //---------------------------------------------------------------------------------------------
 
-const addNotification = userParams => new Promise((resolve, reject) => {
+const addNotification = req => new Promise((resolve, reject) => {
     console.log('addNotification called!');
-    const { id } = userParams.params;
-    const { types = null, event = null } = userParams.body;
+    const { id } = req.params;
+    const { type = null, event = null } = req.body;
     const options = { runValidators: true };
 
-    users.updateOne({ _id: id }, { $push: { inbox: { type: types, event } } }, options)
+    users.updateOne({ _id: id }, { $push: { inbox: { type, event } } }, options)
         .then(result => resolve(result))
         .catch(err => reject(err));
 });
