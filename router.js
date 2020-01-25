@@ -7,7 +7,7 @@ const eventsRouter = new Router();
 // USERS
 usersRouter.get('/:id', usersController.getUser);
 usersRouter.get('/', usersController.getUsers);
-usersRouter.post('/createUser', usersController.createUser);
+usersRouter.post('/', usersController.createUser);
 usersRouter.post('/addNotification/:id', usersController.addNotification);
 usersRouter.put('/event/:id', usersController.addEvent);
 usersRouter.put('/editUser/:id', usersController.editUser);

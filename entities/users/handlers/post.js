@@ -4,8 +4,11 @@ const users = require('../users');
 
 const createUser = userParams => new Promise((resolve, reject) => {
     console.log('createUser called!');
-    const { name = 'noname', profileImage = 'http://dummyimage.com/183x104.bmp/cc0000/ffffff', events = [], friends = [], inbox = [] } = userParams;
-
+    
+    if('name' in userParams === false) {
+        return reject('"name" is mandatory');
+    }
+    const { name, profileImage = 'http://dummyimage.com/183x104.bmp/cc0000/ffffff', events = [], friends = [], inbox = [] } = userParams;
 
     const newUser = new users({ name, profileImage, events, friends, inbox });
     newUser.save().then(result => resolve(result)).catch(err => reject(err));
