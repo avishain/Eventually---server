@@ -33,7 +33,7 @@ exports.addMessage = (req, res) => addMessage(req)
     })
     .catch(err => {
         console.error(err);
-        res.status(404).send('Image addition failed: ' + err);
+        res.status(404).send('Message addition failed: ' + err);
     })
 
 //---------------------------------------------------------------------------------------------
