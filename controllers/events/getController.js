@@ -25,3 +25,15 @@ exports.getEvents = (req, res) => getEvents(req.query.ids)
     });
 
 //---------------------------------------------------------------------------------------------
+
+exports.getPrefferdDate = (req, res) => getPrefferdDate(req.query.id)
+    .then(date => {
+        console.log(`${date} is the preffered date`);
+        res.send(date);
+    })
+    .catch(err => {
+        console.error(err.message);
+        res.status(404).send('Please recheck the provided ID');
+    });
+
+//---------------------------------------------------------------------------------------------

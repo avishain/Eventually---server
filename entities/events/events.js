@@ -33,8 +33,8 @@ const image = new Schema(
 const suggestion = new Schema(
     {
         user: ObjectId,
-        availableDates: [Date],
-        maybeDates: [Date],
+        availableDates: [Number],
+        maybeDates: [Number],
         extraWeight: Boolean
     }
 )

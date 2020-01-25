@@ -16,6 +16,20 @@ exports.setEventformat = eventParams => {
     return { name, admin, type, profilePicture, time, Messages, participants, invitations, Images, timeSelection };
 }
 
+exports.getPrefferedDate = selection => {
+    const { suggestions, dates } = selection;
+    const suggestionsScore = [];
+
+    dates.forEach(date => suggestionsScore.push(0));
+
+    suggestions.forEach(suggestion => {
+        const { maybeDates, availableDates, extraWeight } = suggestion;
+        availableDates.forEach(dateIndex => suggestionsScore[dateIndex] += extraWeight ? 4 : 2);
+        maybeDates.forEach(dateIndex => suggestionsScore[dateIndex] += extraWeight ? 2 : 1);
+    });
+
+    return dates[Math.max(suggestionsScore)];
+}
 
 // -------------------------------------------------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------------------------------------
@@ -42,15 +56,15 @@ nameValidation = name => typeof name === 'string' && name.length > 4 && name.len
 timeValidation = time => time.getTime() - Date.now() > 0;
 
 exports.containsAllRequired = params => {
-    return  'name' in params == false ? '"name" is mandatory' :
-            'admin' in params == false ? '"admin" is mandatory' :
+    return 'name' in params == false ? '"name" is mandatory' :
+        'admin' in params == false ? '"admin" is mandatory' :
             'type' in params == false ? '"type" is mandatory' :
-            true;
+                true;
 }
 
 exports.getIndex = (array, elemId) => {
-    for(let i = 0; i < array.length; i++) {
-        if(array[i]._id == elemId) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i]._id == elemId) {
             return i;
         }
     }

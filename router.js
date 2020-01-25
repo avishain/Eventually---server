@@ -22,6 +22,7 @@ usersRouter.delete('/notifications/:id', usersController.removeNotification);
 // EVENTS
 eventsRouter.get('/:id', eventsController.getEvent);
 eventsRouter.get('/', eventsController.getEvents);
+eventsRouter.get('/prefferedDate/:id', eventsController.getPrefferdDate);
 eventsRouter.post('/', eventsController.createEvent);
 eventsRouter.post('/image/:eventID', eventsController.addImage);
 eventsRouter.post('/message/:eventID', eventsController.addMessage);

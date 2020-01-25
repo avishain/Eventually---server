@@ -1,4 +1,5 @@
 const events = require('../events');
+const { getPrefferedDate } = require('./helpers');
 
 //---------------------------------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ const getEvents = ids => new Promise((resolve, reject) => {
 
             /*  This call is relevant for showing the event cards in the main page and in the events page
                 and since each event might include a lot of irrlevant data, in order to avoid sending
-                unnecessary data, we decided to retreive only the relevant data */ 
+                unnecessary data, we decided to retreive only the relevant data */
             retreivedEvents.forEach(event => {
                 const { _id, name, time, profileImage, Images, Messages, participants } = event;
                 eventsEdited.push({ _id, name, time, profileImage, imagesAmount: Images.length, MessagesAmount: Messages.length, participantsAmount: participants.length })
@@ -29,7 +30,16 @@ const getEvents = ids => new Promise((resolve, reject) => {
 
 //---------------------------------------------------------------------------------------------
 
+const getPrefferdDate = _id => new Promise((resolve, reject) => {
+    events.findOne({ _id })
+        .then(event => resolve(getPrefferedDate(event.timeSelection)))
+        .catch(err => reject(err));
+})
+
+//---------------------------------------------------------------------------------------------
+
 module.exports = {
     getEvent,
-    getEvents
+    getEvents,
+    getPrefferdDate
 }
