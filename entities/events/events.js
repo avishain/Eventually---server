@@ -17,7 +17,7 @@ const types = [
 const message = new Schema(
     {
         text: String,
-        time: Date,
+        time: { type: Date, default: Date.now },
         writer: ObjectId
     }
 );
@@ -25,7 +25,7 @@ const message = new Schema(
 const image = new Schema(
     {
         url: String,
-        time: Date,
+        time: { type: Date, default: Date.now },
         uploader: ObjectId
     }
 );
