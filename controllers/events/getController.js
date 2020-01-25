@@ -1,4 +1,4 @@
-const { getEvent, getEvents } = require('../../entities/events/handlers/get');
+const { getEvent, getEvents, getPrefferdDate } = require('../../entities/events/handlers/get');
 
 //---------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ exports.getEvents = (req, res) => getEvents(req.query.ids)
 
 //---------------------------------------------------------------------------------------------
 
-exports.getPrefferdDate = (req, res) => getPrefferdDate(req.query.id)
+exports.getPrefferdDate = (req, res) => getPrefferdDate(req.params.id)
     .then(date => {
         console.log(`${date} is the preffered date`);
         res.send(date);

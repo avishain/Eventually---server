@@ -28,7 +28,7 @@ exports.getPrefferedDate = selection => {
         maybeDates.forEach(dateIndex => suggestionsScore[dateIndex] += extraWeight ? 2 : 1);
     });
 
-    return dates[Math.max(suggestionsScore)];
+    return dates[suggestionsScore.indexOf(Math.max(...suggestionsScore))];
 }
 
 // -------------------------------------------------------------------------------------------------------------------------
