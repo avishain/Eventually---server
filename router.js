@@ -4,6 +4,7 @@ const { usersController, eventsController } = require('./controller');
 const usersRouter = new Router();
 const eventsRouter = new Router();
 
+// USERS
 usersRouter.get('/:id', usersController.getUser);
 usersRouter.get('/', usersController.getUsers);
 usersRouter.post('/createUser', usersController.createUser);
@@ -17,6 +18,8 @@ usersRouter.put('/removeFriend/:id', usersController.removeFriend);
 usersRouter.put('/removeEvent/:id', usersController.removeEvent);
 usersRouter.delete('/removeUser/:id', usersController.removeUser);
 usersRouter.delete('/removeNotification/:id', usersController.removeNotification);
+
+// EVENTS
 eventsRouter.get('/:id', eventsController.getEvent);
 eventsRouter.get('/', eventsController.getEvents);
 eventsRouter.post('/', eventsController.createEvent);

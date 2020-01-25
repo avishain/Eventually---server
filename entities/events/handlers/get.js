@@ -1,9 +1,13 @@
 const events = require('../events');
 
+//---------------------------------------------------------------------------------------------
+
 const getEvent = _id => new Promise((resolve, reject) => {
     console.log(_id);
     events.findOne({ _id }).then(event => resolve(event)).catch(err => reject(err));
 });
+
+//---------------------------------------------------------------------------------------------
 
 const getEvents = ids => new Promise((resolve, reject) => {
     events.find().where('_id').in(ids)
@@ -22,6 +26,8 @@ const getEvents = ids => new Promise((resolve, reject) => {
         })
         .catch(err => reject(err));
 })
+
+//---------------------------------------------------------------------------------------------
 
 module.exports = {
     getEvent,

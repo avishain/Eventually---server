@@ -1,6 +1,8 @@
 const Event = require('../events');
 const { validateParams, setEventformat, containsAllRequired } = require('./helpers');
 
+//---------------------------------------------------------------------------------------------
+
 const createEvent = newEventParams => new Promise((resolve, reject) => {
     let validationCheck = validateParams(newEventParams);
     validationCheck = validationCheck === true ? containsAllRequired(newEventParams) : validationCheck;
@@ -14,6 +16,8 @@ const createEvent = newEventParams => new Promise((resolve, reject) => {
     newEvent.save().then(result => resolve(result)).catch(err => reject(err));
 });
 
+//---------------------------------------------------------------------------------------------
+
 const addImage = req => {
     const _id = req.params.eventID;
     return new Promise((resolve, reject) => {
@@ -21,12 +25,16 @@ const addImage = req => {
     })
 };
 
+//---------------------------------------------------------------------------------------------
+
 const addMessage = req => {
     const _id = req.params.eventID;
     return new Promise((resolve, reject) => {
         Event.updateOne({ _id }, { $push: { Messages: req.body } }).then(result => resolve(result)).catch(err => reject(err));
     })
 };
+
+//---------------------------------------------------------------------------------------------
 
 module.exports = {
     createEvent,

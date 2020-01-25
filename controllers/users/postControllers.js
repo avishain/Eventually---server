@@ -1,5 +1,7 @@
 const { createUser, addNotification } = require('../../entities/users/handlers/post');
 
+//---------------------------------------------------------------------------------------------
+
 exports.createUser = (req, res) => createUser(req.body)
 	.then(user => {
 		console.log(`User (${user._id}) was provided`);
@@ -10,6 +12,8 @@ exports.createUser = (req, res) => createUser(req.body)
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');
 	});
+
+//---------------------------------------------------------------------------------------------
 
 exports.addNotification = (req, res) => addNotification(req)
 	.then(notification => {
@@ -24,3 +28,5 @@ exports.addNotification = (req, res) => addNotification(req)
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided ID');
 	});
+
+//---------------------------------------------------------------------------------------------

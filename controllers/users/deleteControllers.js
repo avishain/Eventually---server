@@ -1,5 +1,7 @@
 const { removeUser, removeNotification } = require('../../entities/users/handlers/delete');
 
+//---------------------------------------------------------------------------------------------
+
 exports.removeUser = (req, res) => removeUser(req)
 	.then(response => {
 		let MSG = 'user removed successfully';
@@ -11,6 +13,8 @@ exports.removeUser = (req, res) => removeUser(req)
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided user correct ID!');
 	});
+
+//---------------------------------------------------------------------------------------------
 
 exports.removeNotification = (req, res) => removeNotification(req)
 	.then(response => {
@@ -27,3 +31,5 @@ exports.removeNotification = (req, res) => removeNotification(req)
 		console.error(err.message);
 		res.status(404).send('Please recheck the provided user correct ID!');
 	});
+
+//---------------------------------------------------------------------------------------------

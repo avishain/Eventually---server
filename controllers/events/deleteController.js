@@ -1,5 +1,7 @@
 const { removeEvent, removeImage, removeMessage } = require('../../entities/events/handlers/delete');
 
+//---------------------------------------------------------------------------------------------
+
 exports.removeEvent = (req, res) => removeEvent(req.params.id)
     .then(() => {
         console.log(`Event ${req.params.id} removed successfully`);
@@ -9,6 +11,8 @@ exports.removeEvent = (req, res) => removeEvent(req.params.id)
         console.error(err);
         res.status(404).send('Event removal failed');
     })
+
+//---------------------------------------------------------------------------------------------
 
 exports.removeImage = (req, res) => removeImage(req.params)
     .then(() => {
@@ -20,6 +24,8 @@ exports.removeImage = (req, res) => removeImage(req.params)
         res.status(404).send('Image removal failed');
     })
 
+//---------------------------------------------------------------------------------------------
+
 exports.removeMessage = (req, res) => removeMessage(req.params)
     .then(() => {
         console.log(`Message ${req.params.messageId} removed successfully`);
@@ -29,3 +35,5 @@ exports.removeMessage = (req, res) => removeMessage(req.params)
         console.error(err);
         res.status(404).send('Message removal failed');
     })
+
+//---------------------------------------------------------------------------------------------

@@ -7,10 +7,10 @@ exports.usersController = {
 	// GET
 	getUser,
 	getUsers,
-	// // POST
+	// POST
 	createUser,
 	addNotification,
-	// // PUT
+	// PUT
 	editUser,
 	editProfilePicture,
 	editName,
@@ -18,7 +18,7 @@ exports.usersController = {
 	removeFriend,
 	addEvent,
 	removeEvent,
-	// // DELETE
+	// DELETE
 	removeUser,
 	removeNotification
 };
