@@ -8,16 +8,16 @@ const eventsRouter = new Router();
 usersRouter.get('/:id', usersController.getUser);
 usersRouter.get('/', usersController.getUsers);
 usersRouter.post('/', usersController.createUser);
-usersRouter.post('/addNotification/:id', usersController.addNotification);
+usersRouter.post('/notifications/:id', usersController.addNotification);
 usersRouter.put('/event/:id', usersController.addEvent);
-usersRouter.put('/editUser/:id', usersController.editUser);
-usersRouter.put('/editName/:id', usersController.editName);
-usersRouter.put('/editProfilePicture/:id', usersController.editProfilePicture);
-usersRouter.put('/addFriend/:id', usersController.addFriend);
-usersRouter.put('/removeFriend/:id', usersController.removeFriend);
-usersRouter.put('/removeEvent/:id', usersController.removeEvent);
-usersRouter.delete('/removeUser/:id', usersController.removeUser);
-usersRouter.delete('/removeNotification/:id', usersController.removeNotification);
+usersRouter.put('/:id', usersController.editUser);
+usersRouter.put('/name/:id', usersController.editName);
+usersRouter.put('/profileImage/:id', usersController.editProfilePicture);
+usersRouter.put('/friends/add/:id', usersController.addFriend);
+usersRouter.put('/friend/remove/:id', usersController.removeFriend);
+usersRouter.put('/events/remove/:id', usersController.removeEvent);
+usersRouter.delete('/:id', usersController.removeUser);
+usersRouter.delete('/notifications/:id', usersController.removeNotification);
 
 // EVENTS
 eventsRouter.get('/:id', eventsController.getEvent);
