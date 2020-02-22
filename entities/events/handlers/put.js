@@ -1,4 +1,4 @@
-const { Event } = require('../events');
+const Event = require('../events');
 const { Suggestions } = require('../events');
 const { validateParams, typeTypes, getIndex } = require('./helpers');
 
