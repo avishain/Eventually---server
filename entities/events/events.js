@@ -33,8 +33,8 @@ const image = new Schema(
 const suggestion = new Schema(
     {
         user: ObjectId,
-        availableDates: [Number],
-        maybeDates: [Number],
+        availableDates: [Date],
+        maybeDates: [Date],
         extraWeight: Boolean
     }
 )
@@ -67,4 +67,5 @@ const eventSchema = new Schema(
 )
 
 
-module.exports = mongoose.model('events', eventSchema);
+exports.Event = mongoose.model('events', eventSchema);
+exports.Suggestions = mongoose.model('Suggestions', suggestion);

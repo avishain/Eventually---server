@@ -1,4 +1,5 @@
-const Event = require('../events');
+const { Event } = require('../events');
+const { Suggestions } = require('../events');
 const { validateParams, typeTypes, getIndex } = require('./helpers');
 
 //---------------------------------------------------------------------------------------------
@@ -74,7 +75,7 @@ const editSuggestion = req => {
                 suggestions[suggestionIndex] = req.body;
                 timeSelection.suggestions = suggestions;
 
-                Event.updateOne({ _id: eventId }, { $set: { timeSelection } }).then(result => resolve(result)).catch(err => reject(`Failed to find event ID: ${err}`));
+                Suggestions.updateOne({ _id: suggestionId }, { $set: { ...suggestions[suggestionIndex] } }).then(result => resolve(result)).catch(err => reject(`Failed to update event ID: ${err}`));
             })
             .catch(err => reject(`Failed to find event ID: ${err}`));
     })
