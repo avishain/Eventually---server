@@ -1,2 +1,5 @@
-# Riding_Groups_server
+# Eventually 🗓
+ ### Getting together gets easier...
+ 
  nodejs server application
+ 
