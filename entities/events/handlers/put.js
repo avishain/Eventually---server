@@ -74,7 +74,7 @@ const editSuggestion = req => {
                 suggestions[suggestionIndex] = req.body;
                 timeSelection.suggestions = suggestions;
 
-                Event.updateOne({ _id: eventId }, { timeSelection }).then(result => resolve(result)).catch(err => reject(`Failed to find event ID: ${err}`));
+                Event.updateOne({ _id: eventId }, { $set: { timeSelection } }).then(result => resolve(result)).catch(err => reject(`Failed to find event ID: ${err}`));
             })
             .catch(err => reject(`Failed to find event ID: ${err}`));
     })
@@ -85,7 +85,7 @@ const editSuggestion = req => {
 const addParticipant = req => {
     const _id = req.params.eventId;
     const { userId } = req.body;
-    
+
     return new Promise((resolve, reject) => {
         Event.updateOne({ _id }, { $push: { participants: userId } }).then(result => resolve(result)).catch(err => reject(err));
     })
